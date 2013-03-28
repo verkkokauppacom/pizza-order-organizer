@@ -23,10 +23,8 @@ $userInput = new Poo\UserInput();
 
 $pizzaOrders = array();
 $requests = array_filter(explode(PHP_EOL, <<<EOF
-juhaj 4 "ROMEO" 7.5 VOL
-samika  42 "Rullakebab" 7.5 VL
-mikkom 38 "ISKENDER kebab" 7.5 OL
-mirko 36 "Ranskalainen kebab" 7.5 L
+nikok 11 "ENERGY" 8 OVL
+mikkom U1 "SYNTTÄRIPIZZA" 8.5 OL
 EOF
 ));
 
@@ -61,7 +59,7 @@ $totalPayment = 0;
 
 foreach ($pizzaOrders as $user => $order) {
     $totalPrice += $order['price'];
-    $totalPayment += $order['payment'];
+    $totalPayment += $order['payment']->getPrice();
 
     $mausteet = '';
 
@@ -74,7 +72,7 @@ foreach ($pizzaOrders as $user => $order) {
         $mausteet = '(' . implode(',', $mausteArray) . ')';
     }
 
-    echo "[ ] " . str_pad($user, 10). " " . str_pad($order['pizza_number'], 2, ' ', STR_PAD_LEFT) . "."  . str_pad(ucwords(strtolower($order['pizza_name'])) . ' ' . $mausteet, 25) . " [maksu: " . $order['payment'] . ", hinta: " . $order['price'] . "]\n";
+    echo "[ ] " . str_pad($user, 10). " " . str_pad($order['pizza_number'], 2, ' ', STR_PAD_LEFT) . "."  . str_pad(ucwords(strtolower($order['pizza_name'])) . ' ' . $mausteet, 25) . " [maksu: " . $order['payment']->getPrice() . ", hinta: " . $order['price'] . "]\n";
 }
 
 $limuRaha = $totalPayment - $totalPrice;
