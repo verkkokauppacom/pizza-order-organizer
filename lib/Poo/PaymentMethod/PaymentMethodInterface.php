@@ -2,9 +2,9 @@
 
 namespace Poo\PaymentMethod;
 
-use Poo\Price\PayableInterface;
+use Poo\Price\PriceableInterface;
 
-interface PaymentMethodInterface extends PayableInterface
+interface PaymentMethodInterface extends PriceableInterface
 {
     /**
      * @return string

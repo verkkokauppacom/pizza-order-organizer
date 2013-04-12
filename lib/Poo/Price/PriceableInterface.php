@@ -2,11 +2,10 @@
 
 namespace Poo\Price;
 
-interface PayableInterface
+interface PriceableInterface
 {
     /**
      * @return float
      */
     public function getPrice();
 }
-
