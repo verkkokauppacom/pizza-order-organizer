@@ -22,7 +22,7 @@ class UserInput
 
             $pizza = new Pizza();
             $pizza->setNumber($matches[2]);
-            $pizza->setNumber($matches[3]);
+            $pizza->setName($matches[3]);
 
             $pizza->setPrice($matches[4]);
             $payment = stristr($matches[6], 'R') ? new Lounasseteli820() : new Lounasseteli930();
