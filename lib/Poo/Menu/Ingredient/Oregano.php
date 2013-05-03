@@ -2,7 +2,7 @@
 
 namespace Poo\Menu\Ingredient;
 
-class Oregano extends IngredientInterface
+class Oregano implements IngredientInterface
 {
     /**
      * @see IngredientInterface::getName()

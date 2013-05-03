@@ -2,7 +2,7 @@
 
 namespace Poo\Menu\Ingredient;
 
-class Garlic extends IngredientInterface
+class Garlic implements IngredientInterface
 {
     /**
      * @see IngredientInterface::getName()

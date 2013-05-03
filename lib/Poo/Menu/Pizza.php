@@ -7,13 +7,40 @@ use Poo\PaymentMethod\PaymentMethodInterface;
 
 class Pizza implements PriceableInterface
 {
+    /**
+     * @var $mixed
+     */
     private $number;
-    private $name;
-    private $price;
-    private $payment;
-    private $hasOregano;
-    private $hasGarlic;
 
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var float
+     */
+    private $price;
+
+    /**
+     * @var PaymentMethodInterface
+     */
+    private $payment;
+
+    /**
+     * @var boolean
+     */
+    private $hasOregano = false;
+
+    /**
+     * @var boolean
+     */
+    private $hasGarlic = false;
+
+    /**
+     * @param mixed $number
+     * @return $this
+     */
     public function setNumber($number)
     {
         $this->number = $number;
@@ -21,11 +48,18 @@ class Pizza implements PriceableInterface
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getNumber()
     {
         return $this->number;
     }
 
+    /**
+     * @param string $name
+     * @return $this
+     */
     public function setName($name)
     {
         $this->name = $name;
@@ -33,11 +67,18 @@ class Pizza implements PriceableInterface
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * @param float $price
+     * @return $this
+     */
     public function setPrice($price)
     {
         $this->price = $price;
@@ -45,11 +86,18 @@ class Pizza implements PriceableInterface
         return $this;
     }
 
+    /**
+     * @return float
+     */
     public function getPrice()
     {
         return $this->price;
     }
 
+    /**
+     * @param PaymentMethodInterface $payment
+     * @return $this
+     */
     public function setPayment(PaymentMethodInterface $payment)
     {
         $this->payment = $payment;
@@ -57,11 +105,18 @@ class Pizza implements PriceableInterface
         return $this;
     }
 
+    /**
+     * @return PaymentMethodInterface
+     */
     public function getPayment()
     {
         return $this->payment;
     }
 
+    /**
+     * @param boolean $hasOregano
+     * @return $this
+     */
     public function setHasOregano($hasOregano = true)
     {
         $this->hasOregano = $hasOregano;
@@ -69,18 +124,25 @@ class Pizza implements PriceableInterface
         return $this;
     }
 
+    /**
+     * @return boolean
+     */
     public function hasOregano()
     {
         return $this->hasOregano;
     }
 
+    /**
+     * @param boolean $hasGarlic
+     * @return $this
+     */
     public function setHasGarlic($hasGarlic = true)
     {
         $hasGarlic = (bool) $hasGarlic;
 
-        if (true === $this->hasGarlic && false === $hasGarlic) {
+        if (false === $this->hasGarlic && true === $hasGarlic) {
             ++$this->price;
-        } elseif (false === $this->hasGarlic && true === $hasGarlic) {
+        } elseif (true === $this->hasGarlic && false === $hasGarlic) {
             --$this->price;
         }
 
@@ -89,6 +151,9 @@ class Pizza implements PriceableInterface
         return $this;
     }
 
+    /**
+     * @return boolean
+     */
     public function hasGarlic()
     {
         return $this->hasGarlic;

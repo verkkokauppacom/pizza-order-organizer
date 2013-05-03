@@ -25,18 +25,19 @@ $userInput = new Poo\Input\UserInput();
 
 $pizzaOrders = array();
 $requests = array_filter(explode(PHP_EOL, <<<EOF
-tommy 35 "RIISIKEBAB" 7.5 L
-mikkom U2 "SYNTTÄRIPIZZA" 8.5 L
+nikok 16 "EX-LOVER" 8 OVL
 juhaj 3 "JULIA" 7.5 OL
-mattinie 35 "RIISIKEBAB" 7.5 L
-nikok U2 "MY LOVE PIZZA" 8.5 LO
-amiettun 6 "HONEYMOON" 7.5 OL
-samulisii U3 "Passion Pizza" 8.5 OR
-samisy 3 "JULIA" 7.5 OV
-jessesan 10 "SWEET DREAMS" 7.5 OL
-hewe 2 "ROMANTICA" 7.0 OL
-maxr 2 "Romantica" 7.0 OVL
-tonis 38 "Iskender Kebab" 7.5 L
+samulisii 4 "ROMEO" 7.5 OR
+samisy 38 "Iskender Kebab" 7.5 OVR
+mattinie 35 "Riisikebab" 7.5 L
+samika 23 "Express Special" 8 L
+hewe 2 "ROMANTICA" 7 OL
+timom  33 "Special kebab " 8.5 L
+maxr 18 "Riviera" 7.5 OVL
+mirko 38 "Iskender Kebab" 7.5 L
+mikkom 38 "Iskender Kebab" 7.5 L
+vesap 5 "Wedding" 7.5 O
+tonis U3 "Passion Pizza" 8.5 L
 pasihu 17 "Hot-lover" 7.5 L
 EOF
 ));

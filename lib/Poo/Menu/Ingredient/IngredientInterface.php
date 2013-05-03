@@ -2,7 +2,7 @@
 
 namespace Poo\Menu\Ingredient;
 
-interface IngredientInterface extends Poo\Price\PriceableInterface
+interface IngredientInterface extends \Poo\Price\PriceableInterface
 {
     /**
      * @return string

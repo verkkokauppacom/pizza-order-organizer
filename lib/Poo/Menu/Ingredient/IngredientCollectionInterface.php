@@ -2,6 +2,6 @@
 
 namespace Poo\Menu\Ingredient;
 
-interface IngredientCollectionInterface \Iterator, \ArrayAccess
+interface IngredientCollectionInterface extends \Poo\Price\PriceableInterface, \IteratorAggregate, \Countable
 {
 }
