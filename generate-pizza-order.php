@@ -1,8 +1,5 @@
 <?php
 
-const LOUNARI = 9.3;
-const R_LOUNARI = 8.2; // Reaktor-lounari
-
 const PRICE_LIMU = 3.5;
 
 const PIZZA_URL = 'http://pizzaexpress-lauttasaari.pizza-online.fi/index.php';
@@ -22,31 +19,35 @@ $userInput = new Poo\Input\UserInput();
  * @see http://pizzaexpress-lauttasaari.pizza-online.fi/index.php
  */
 
-
 $pizzaOrders = array();
 $requests = array_filter(explode(PHP_EOL, <<<EOF
-nikok 16 "EX-LOVER" 8 OVL
-juhaj 3 "JULIA" 7.5 OL
-samulisii 4 "ROMEO" 7.5 OR
-samisy 38 "Iskender Kebab" 7.5 OVR
-mattinie 35 "Riisikebab" 7.5 L
-samika 23 "Express Special" 8 L
-hewe 2 "ROMANTICA" 7 OL
-timom  33 "Special kebab " 8.5 L
-maxr 18 "Riviera" 7.5 OVL
-mirko 38 "Iskender Kebab" 7.5 L
-mikkom 38 "Iskender Kebab" 7.5 L
-vesap 5 "Wedding" 7.5 O
-tonis U3 "Passion Pizza" 8.5 L
-pasihu 17 "Hot-lover" 7.5 L
+tommy 35 "RIISIKEBAB" 7.5 L
+maxr 35 "RIISIKEBAB" 7.5 L
+pasihu 17 "HOT-LOVER" 7.5 OL
+juhaj 4 "ROMEO" 7.5 OL
+jessesan 10 "SWEET DREAMS" 7.5 OL
+samika 42 "RULLAKEBAB" 7.5 L
+mattinie 35 "RIISIKEBAB" 7.5 L
+siruhu 12 "POWER" 8 OVL
+hewe 2 "ROMANTICA" 7.0 OL
+nikok 16 "EX-LOVER" 8 OL
+timom ? "SPECIALKEBAB" 8.2 L
+samisy 42 "RULLAKEBAB" 7.5 L
+jussitai 17 "HOT-LOVER" 7.5 OVL
+mikkom U1 "SYNTTÄRI PIZZA" 8.5 L
+mirko U1 "SYNTTÄRI PIZZA" 8.5 OVL
+vesap 1 "FIRST LOVE" 6.5 O
 EOF
 ));
 
 foreach ($requests as $input) {
     $parsed = $userInput->readLine($input);
-    if (null !== $parsed) {
-        $pizzaOrders[key($parsed)] = current($parsed);
+    if (null === $parsed) {
+        echo "Error in line " . $input . PHP_EOL;
+        continue;
     }
+
+    $pizzaOrders[key($parsed)] = current($parsed);
 }
 
 /**
@@ -55,7 +56,7 @@ foreach ($requests as $input) {
  * @param array &$orders
  * @return void
  */
-function sortByPizzaNumber(array &$orders)
+function sortByPizzaNumber(array & $orders)
 {
     uasort($orders, function(Pizza $pizza1, Pizza $pizza2) {
         if ($pizza1->getNumber() == $pizza2->getNumber()) {
@@ -95,7 +96,7 @@ foreach ($pizzaOrders as $user => $pizza) {
 $limuRaha = $totalPayment - $totalPrice;
 $limuCount = floor($limuRaha / PRICE_LIMU);
 
-echo "Hinta yhteensä: {$totalPrice}€\n";
-echo "Maksu yhteensä: {$totalPayment}€\n";
-echo "Limurahaa jää: {$limuRaha}€, limuja saadaan siis {$limuCount} kpl.\n";
-echo "alahan tilailee: " . PIZZA_URL . "\n";
+echo "Hinta yhteensä: {$totalPrice}€" . PHP_EOL;
+echo "Maksu yhteensä: {$totalPayment}€" . PHP_EOL;
+echo "Limurahaa jää: {$limuRaha}€, limuja saadaan siis {$limuCount} kpl." . PHP_EOL;
+echo "alahan tilailee: " . PIZZA_URL . PHP_EOL;
